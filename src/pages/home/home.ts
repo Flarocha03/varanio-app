@@ -7,33 +7,77 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  ASSETS_VARANIO_LIKE = "assets/varanio/like.png";
+  ASSETS_ALEATORIO_1 = "assets/aleatorio/1.png";
+  ASSETS_ALEATORIO_2 = "assets/aleatorio/2.png";
+  ASSETS_ALEATORIO_3 = "assets/aleatorio/3.png";
+  ASSETS_ALEATORIO_4 = "assets/aleatorio/4.png";
+  ASSETS_ALEATORIO_5 = "assets/aleatorio/5.png";
+  ASSETS_ALEATORIO_6 = "assets/aleatorio/6.png";
+  ASSETS_ALEATORIO_7 = "assets/aleatorio/7.png";
+
+  ASSETS_PORO_COMIDA = "assets/poro/comida.png";
+  ASSETS_PORO_MUNDIAL = "assets/poro/mundial.png";
+  ASSETS_PORO_PORO = "assets/poro/poro.png";
+  ASSETS_PORO_RAIVOSO = "assets/poro/raivoso.png";
+
   ASSETS_VARANIO_ACHEI = "assets/varanio/achei.png";
+  ASSETS_VARANIO_AWNS = "assets/varanio/awns.png";
+  ASSETS_VARANIO_CORRE = "assets/varanio/corre.png";
+  ASSETS_VARANIO_HUE = "assets/varanio/hue.png";
+  ASSETS_VARANIO_LIKE = "assets/varanio/like.png";
+  ASSETS_VARANIO_LINGUA = "assets/varanio/lingua.png";
+  ASSETS_VARANIO_UE = "assets/varanio/ue.png";
+
+  ASSETS_VARANIO_MAP: any[] = [];
+
+  //holder do produto
+  produto: any = {};
 
   //lista onde será armazenado varanios
   varanios: any[] = [];
 
   constructor(public navCtrl: NavController) {
-    
-    //novo varanio
-    let varanio: any = {
-      image: this.ASSETS_VARANIO_ACHEI,
-      titulo: "Varanio puto",
-      subTitulo: "Putasso",
-    };
-  
-    this.varanios.push( varanio );
+
+    this.ASSETS_VARANIO_MAP.push( this.ASSETS_VARANIO_ACHEI );
+    this.ASSETS_VARANIO_MAP.push( this.ASSETS_VARANIO_AWNS );
+    this.ASSETS_VARANIO_MAP.push( this.ASSETS_VARANIO_CORRE );
+    this.ASSETS_VARANIO_MAP.push( this.ASSETS_VARANIO_HUE );
+    this.ASSETS_VARANIO_MAP.push( this.ASSETS_VARANIO_LIKE );
+    this.ASSETS_VARANIO_MAP.push( this.ASSETS_VARANIO_LINGUA );
+    this.ASSETS_VARANIO_MAP.push( this.ASSETS_VARANIO_UE );
+
+    this.ASSETS_VARANIO_MAP.push( this.ASSETS_PORO_COMIDA );
+    this.ASSETS_VARANIO_MAP.push( this.ASSETS_PORO_MUNDIAL );
+    this.ASSETS_VARANIO_MAP.push( this.ASSETS_PORO_PORO );
+    this.ASSETS_VARANIO_MAP.push( this.ASSETS_PORO_RAIVOSO );
+
+    this.ASSETS_VARANIO_MAP.push( this.ASSETS_ALEATORIO_1 );
+    this.ASSETS_VARANIO_MAP.push( this.ASSETS_ALEATORIO_2 );
+    this.ASSETS_VARANIO_MAP.push( this.ASSETS_ALEATORIO_3 );
+    this.ASSETS_VARANIO_MAP.push( this.ASSETS_ALEATORIO_4 );
+    this.ASSETS_VARANIO_MAP.push( this.ASSETS_ALEATORIO_5 );
+    this.ASSETS_VARANIO_MAP.push( this.ASSETS_ALEATORIO_6 );
+    this.ASSETS_VARANIO_MAP.push( this.ASSETS_ALEATORIO_7 );
   }
 
-  adicionarVaranio() {
+  varanioAleatorio() {
+    let index = Math.floor( Math.random() * this.ASSETS_VARANIO_MAP.length );
+    return this.ASSETS_VARANIO_MAP[index];
+  }
+
+  adicionarVaranio( produto: any ) {
     //novo varanio
     let varanio: any = {
-      image: this.ASSETS_VARANIO_LIKE,
-      titulo: "Varanio puto2",
-      subTitulo: "Putasso2",
+      image: this.varanioAleatorio(),
+      titulo: produto.nome,
+      subTitulo: produto.valor,
     };
   
     this.varanios.push( varanio );
   };
+
+  removeProduto( index: any ) {
+      this.varanios.splice(index, 1);
+  }
 
 }
