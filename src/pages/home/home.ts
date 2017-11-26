@@ -36,8 +36,7 @@ export class HomePage {
   //lista onde será armazenado varanios
   varanios: any[] = [];
 
-  constructor(public navCtrl: NavController) {
-
+  constructor( public navCtrl: NavController ) {
     this.ASSETS_VARANIO_MAP.push( this.ASSETS_VARANIO_ACHEI );
     this.ASSETS_VARANIO_MAP.push( this.ASSETS_VARANIO_AWNS );
     this.ASSETS_VARANIO_MAP.push( this.ASSETS_VARANIO_CORRE );
@@ -69,8 +68,8 @@ export class HomePage {
     //novo varanio
     let varanio: any = {
       image: this.varanioAleatorio(),
-      titulo: produto.nome,
-      subTitulo: produto.valor,
+      nome: produto.nome,
+      valor: produto.valor,
     };
   
     this.varanios.push( varanio );
@@ -80,4 +79,12 @@ export class HomePage {
       this.varanios.splice(index, 1);
   }
 
+  getTotal() {
+    let total = 0.0;
+    for( let produto of this.varanios ) {
+      total += ( produto.valor ) * 1.0;
+    }
+
+    return total;
+  }
 }

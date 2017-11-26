@@ -9,33 +9,31 @@
 
 <ion-content padding style="background: #e0e0e0;">
   
-  <div class="row">
-    <button ion-button (click)="adicionarVaranio( produto )">Adicionar item</button>
-   
+  <div class="row" style="box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12); padding: 20px; margin-bottom: 30px; margin-left: 10px; margin-right: 10px; background-color: white;">
     <ion-input type="text" [(ngModel)]="produto.nome" placeholder="Produto" style="border-bottom: 1px solid #79A5E9; margin-left: 10px; margin-right: 10px;"></ion-input>
     <ion-input type="number" [(ngModel)]="produto.valor" placeholder="Valor" style="border-bottom: 1px solid #79A5E9;"></ion-input>
+    <button ion-button (click)="adicionarVaranio( produto )">Adicionar item</button>
   </div>
 
-  <ion-item-divider color="light" style="min-height: 1px; height:1px;margin-top: 20px;"></ion-item-divider>
-
-  <div class="title">{{ 'Produtos (' + varanios.length + ')' }}</div>
+  <div class="row" style="margin: 10px;">
+    <div style="flex: 1;">{{ 'Produtos (' + varanios.length + ')' }}</div>
+    <div>{{ 'Total: ' + getTotal() }}</div>
+  </div>
   
 
  <ion-card *ngFor="let varanio of varanios; let i = index;">  
     <ion-item>
       <div class="row">
           <img style = "width :70px;height :70px" src="{{ varanio.image }}">
-        <div class="row">
+        <div class="row" style="flex: 1;">
             <div class="col">
-                <h1>{{ varanio.titulo }}</h1>
-                <h4 style="color: #00BFA5;">{{ 'R$ ' + varanio.subTitulo }}</h4>
+                <h1>{{ varanio.nome }}</h1>
+                <h4 style="color: #00BFA5;">{{ 'R$ ' + varanio.valor }}</h4>
             </div>
-            
-            <!-- Only icon (no text) -->
+
             <button ion-button icon-only (click)="removeProduto( i )">
               <ion-icon name="trash"></ion-icon>
             </button>
-
 
         </div>
       </div>
