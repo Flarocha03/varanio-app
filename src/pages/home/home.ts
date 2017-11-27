@@ -37,6 +37,7 @@ export class HomePage {
 
   //lista onde será armazenado varanios
   varanios: any[] = [];
+  pagos: any[] = [];
 
   constructor( public platform: Platform, public nativeStorage: NativeStorage, public navCtrl: NavController ) {
     this.ASSETS_VARANIO_MAP.push( this.ASSETS_VARANIO_ACHEI );
@@ -62,6 +63,7 @@ export class HomePage {
 
     this.platform.ready().then(() => {
       this.listProdutos();
+      this.listPagos();
     });
   }
 
@@ -101,7 +103,17 @@ export class HomePage {
   }
 
   listProdutos() {
-    this.nativeStorage.getItem( 'produto' )
-    .then( produtos => produtos == null ? this.nativeStorage.setItem( 'produto', [] ) : this.varanios = produtos );
+    // this.nativeStorage.getItem( 'produto' )
+    // .then( produtos => produtos == null ? this.nativeStorage.setItem( 'produto', [] ) : this.varanios = produtos );
+  }
+
+  listPagos() {
+    // this.nativeStorage.getItem( 'pago' )
+    // .then( pagos => pagos == null ? this.nativeStorage.setItem( 'pago', [] ) : this.pagos = pagos );
+  }
+
+  pagar( produto ) {
+    this.pagos.push( produto );
+    this.nativeStorage.setItem( 'pago', this.pagos );
   }
 }
