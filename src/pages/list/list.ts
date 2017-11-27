@@ -28,8 +28,8 @@ export class ListPage {
    * 
    */
   listPagos() {
-    // this.nativeStorage.getItem( 'pago' )
-    // .then( pagos => pagos == null ? this.nativeStorage.setItem( 'pago', [] ) : this.varanios = pagos );
+    this.nativeStorage.getItem( 'pago' )
+    .then( pagos => pagos == null ? this.nativeStorage.setItem( 'pago', [] ) : this.varanios = pagos );
   }
 
   /**
@@ -43,4 +43,13 @@ export class ListPage {
 
     return total;
   }
+
+  /**
+   * 
+   * @param index 
+   */
+  removeProduto( index: any ) {
+    this.varanios.splice( index, 1 );
+    this.nativeStorage.setItem( 'pago', this.varanios );
+}
 }

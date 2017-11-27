@@ -103,17 +103,18 @@ export class HomePage {
   }
 
   listProdutos() {
-    // this.nativeStorage.getItem( 'produto' )
-    // .then( produtos => produtos == null ? this.nativeStorage.setItem( 'produto', [] ) : this.varanios = produtos );
+    this.nativeStorage.getItem( 'produto' )
+    .then( produtos => produtos == null ? this.nativeStorage.setItem( 'produto', [] ) : this.varanios = produtos );
   }
 
   listPagos() {
-    // this.nativeStorage.getItem( 'pago' )
-    // .then( pagos => pagos == null ? this.nativeStorage.setItem( 'pago', [] ) : this.pagos = pagos );
+    this.nativeStorage.getItem( 'pago' )
+    .then( pagos => pagos == null ? this.nativeStorage.setItem( 'pago', [] ) : this.pagos = pagos );
   }
 
-  pagar( produto ) {
+  pagar( produto, index ) {
     this.pagos.push( produto );
+    this.removeProduto( index );
     this.nativeStorage.setItem( 'pago', this.pagos );
   }
 }
