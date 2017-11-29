@@ -81,6 +81,8 @@ export class HomePage {
     };
   
     this.insertProduto( varanio );
+    produto.nome = null;
+    produto.valor = null;
   };
 
   removeProduto( index: any ) {
@@ -113,6 +115,7 @@ export class HomePage {
   }
 
   pagar( produto, index ) {
+    produto.dataPaga = new Date();
     this.pagos.push( produto );
     this.removeProduto( index );
     this.nativeStorage.setItem( 'pago', this.pagos );

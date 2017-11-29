@@ -51,5 +51,9 @@ export class ListPage {
   removeProduto( index: any ) {
     this.varanios.splice( index, 1 );
     this.nativeStorage.setItem( 'pago', this.varanios );
-}
+  }
+
+  toLocaleDateString(dataPaga){
+  return new Date(dataPaga).toLocaleDateString();
+  }
 }
